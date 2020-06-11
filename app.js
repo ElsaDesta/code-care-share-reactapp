@@ -42,9 +42,6 @@ mongoose.connect(db, {
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB Connected')).catch(err => console.log(err));
 
-
-
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
