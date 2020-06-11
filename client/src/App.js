@@ -8,9 +8,8 @@ import ItemModal from "./components/ItemModal";
 import { Container } from "reactstrap";
 import { Component } from "react";
 import CommentList from "./components/CommentList";
-import Login from "./components/Login";
 
-// we wrap the whole thing with provider to access the store (state?-to share the state throughout our components?) and give itproperty store
+// we wrap the whole thing with provider to access the store
 class App extends Component {
   render() {
     return (
@@ -28,7 +27,7 @@ class App extends Component {
               help others? Please share it below. You can add your name if you
               want.{" "}
             </p>
-            <Login />
+
             <ItemModal />
             <CommentList />
           </Container>
