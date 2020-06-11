@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 /*routes */
-const indexRouter = require('./routes/index');
+
 const itemsRouter = require('./routes/items');
 
 const app = express();
@@ -28,6 +28,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 //app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+if(process.env.NODE_ENV === "production") {
+  app.use('/', express.static(path.join(__dirname, "client/build")));
+}
+app.use('/items', itemsRouter);
 
 /* mongodb connection */
 const { mongodb } = process.env;
@@ -38,8 +42,8 @@ mongoose.connect(db, {
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB Connected')).catch(err => console.log(err));
 
-app.use('/', indexRouter);
-app.use('/items', itemsRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
