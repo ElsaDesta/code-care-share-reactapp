@@ -6,7 +6,6 @@
     "node": "12.14.1"
   },
   "scripts": {
-    "build": "cd client && npm run build",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "start": "node ./bin/www",
     "client": "cd client &&  npm start",
