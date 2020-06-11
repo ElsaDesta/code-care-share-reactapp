@@ -7,3 +7,6 @@ A platform where we trainees share our experiences of working and studying remot
 - redux to manage the state
 - mongodb, nodejs and express on the backend
 
+##To Do
+- let users sing up and sign in
+- comment delete control(users can only delete their own comment)
