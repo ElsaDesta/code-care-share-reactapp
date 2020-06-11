@@ -14,6 +14,14 @@ const mongoose = require('mongoose');
 const itemsRouter = require('./routes/items');
 
 const app = express();
+/* mongodb connection */
+const { mongodb } = process.env;
+const db = mongodb;
+mongoose.connect(db || process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+}).then(() => console.log('MongoDB Connected')).catch(err => console.log(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,19 +36,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 //app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-if(process.env.NODE_ENV === "production") {
-  app.use('/', express.static(path.join(__dirname, "/client/build")));
-}
 app.use('/items', itemsRouter);
 
-/* mongodb connection */
-const { mongodb } = process.env;
-const db = mongodb;
-mongoose.connect(db, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true
-}).then(() => console.log('MongoDB Connected')).catch(err => console.log(err));
+if(process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  })
+}
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
