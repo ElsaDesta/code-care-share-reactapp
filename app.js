@@ -16,8 +16,8 @@ const itemsRouter = require('./routes/items');
 const app = express();
 /* mongodb connection */
 //const { mongodb } = process.env.mongodb;
-//const db = mongodb;
-mongoose.connect(process.env.mongodb , {
+const db = process.env.mongodb;
+mongoose.connect(`${db}` , {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
