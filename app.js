@@ -17,7 +17,7 @@ const app = express();
 /* mongodb connection */
 //const { mongodb } = process.env.mongodb;
 //const db = mongodb;
-mongoose.connect(process.env.mongodb, {
+mongoose.connect(process.env.mongodb || 'mongodb://localhost/my_database', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
@@ -39,11 +39,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/items', itemsRouter);
 
 if(process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use("/", express.static(path.join(__dirname, "/client/build")));
   
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-  })
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.join(__dirname, "client", 'build', 'index.html'));
+  // })
 }
 
 // catch 404 and forward to error handler
