@@ -17,7 +17,7 @@ const app = express();
 /* mongodb connection */
 //const { mongodb } = process.env.mongodb;
 //const db = mongodb;
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/my_database', {
+mongoose.connect(process.env.mongodb , {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
