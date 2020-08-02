@@ -1,15 +1,16 @@
 ## Code-Care-Share 
-I created code-care-share app while I was training at Wild Code School during the lockdown because of Corona.
-A platform where we trainees share our experiences of working and studying remotely -(the challenges, frustrations) - to support and learn from one another.
+https://code-care-share.herokuapp.com/
+I created code-care-share during the CORONA lockdown. I was doing a full-time course in Amsterdam, which turned into a remote session.
+I intended to create a platform where we trainees share our experiences of working and studying remotely (the challenges, frustrations) - to support and learn from one another.
 
-users-- can post their comments, this is saved in mongo db and displayed on the app. 
+Users can post their comments, this is saved in MongoDB. 
 
-
-#technologies
+## Technologies used
 - reactjs
 - redux to manage the state
 - mongodb, nodejs and express on the backend
 
-##To Do
-- let users sing up and sign in
-- comment delete control(users can only delete their own comment)
+### To Do
+- Let users sing up and sign in
+- Comment delete control(users can only delete their own comment)
+- Unit testing
